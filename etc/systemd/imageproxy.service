@@ -1,0 +1,10 @@
+# /etc/systemd/system/imageproxy.service
+
+[Unit]
+Description=Image proxy server
+
+[Service]
+ExecStart=/usr/bin/imageproxy -addr localhost:8080 -log_dir /var/log/imageproxy -signatureKey "<secret-password>"
+
+[Install]
+WantedBy=multi-user.target
