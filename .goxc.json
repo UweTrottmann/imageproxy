@@ -5,12 +5,12 @@
 		"pkg-build": {
 			"metadata": {
 				"description": "image proxy server",
-				"long-description": " imageproxy is a caching image proxy server",
-				"maintainer": "Will Norris",
-				"maintainer-email": "will@willnorris.com"
+				"long-description": " imageproxy is a caching image proxy server, adapted for SeriesGuide",
+				"maintainer": "Uwe Trottmann",
+				"maintainer-email": "uwe@seriesgui.de"
 			},
 			"metadata-deb": {
-				"Homepage": "https://willnorris.com/go/imageproxy"
+				"Homepage": "https://github.com/UweTrottmann/imageproxy"
 			}
 		}
 	},

@@ -27,8 +27,8 @@ import (
 	"github.com/gregjones/httpcache"
 	"github.com/gregjones/httpcache/diskcache"
 	"github.com/peterbourgon/diskv"
+	"github.com/UweTrottmann/imageproxy"
 	"sourcegraph.com/sourcegraph/s3cache"
-	"willnorris.com/go/imageproxy"
 )
 
 // goxc values
