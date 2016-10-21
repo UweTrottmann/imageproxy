@@ -94,7 +94,16 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.URL.Path == "/health-check" {
+		// cache for up to a minute to prevent abuse
+		w.Header().Set("Cache-Control", "public, max-age=60")
 		fmt.Fprint(w, "OK")
+		return
+	}
+
+	if r.URL.Path == "/" {
+		// cache for up to a day to prevent abuse
+		w.Header().Set("Cache-Control", "public, max-age=86400")
+		fmt.Fprint(w, "This is an image cache server for SeriesGuide.")
 		return
 	}
 
