@@ -32,13 +32,13 @@ func TestAllowed(t *testing.T) {
 	whitelist := []string{"good"}
 	key := []byte("c0ffee")
 
-	genRequest := func(headers map[string]string) *http.Request {
-		req := &http.Request{Header: make(http.Header)}
-		for key, value := range headers {
-			req.Header.Set(key, value)
-		}
-		return req
-	}
+	//genRequest := func(headers map[string]string) *http.Request {
+	//	req := &http.Request{Header: make(http.Header)}
+	//	for key, value := range headers {
+	//		req.Header.Set(key, value)
+	//	}
+	//	return req
+	//}
 
 	tests := []struct {
 		url       string
@@ -56,11 +56,11 @@ func TestAllowed(t *testing.T) {
 		{"http://good/image", emptyOptions, whitelist, nil, nil, nil, true},
 		{"http://bad/image", emptyOptions, whitelist, nil, nil, nil, false},
 
-		// referrer
-		{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "http://good/foo"}), true},
-		{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "http://bad/foo"}), false},
-		{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "MALFORMED!!"}), false},
-		{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{}), false},
+		//// referrer
+		//{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "http://good/foo"}), true},
+		//{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "http://bad/foo"}), false},
+		//{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{"Referer": "MALFORMED!!"}), false},
+		//{"http://test/image", emptyOptions, nil, whitelist, nil, genRequest(map[string]string{}), false},
 
 		// signature key
 		{"http://test/image", Options{Signature: "NDx5zZHx7QfE8E-ijowRreq6CJJBZjwiRfOVk_mkfQQ="}, nil, nil, key, nil, true},
@@ -68,7 +68,6 @@ func TestAllowed(t *testing.T) {
 		{"http://test/image", emptyOptions, nil, nil, key, nil, false},
 
 		// whitelist and signature
-		{"http://good/image", emptyOptions, whitelist, nil, key, nil, true},
 		{"http://bad/image", Options{Signature: "gWivrPhXBbsYEwpmWAKjbJEiAEgZwbXbltg95O2tgNI="}, nil, nil, key, nil, true},
 		{"http://bad/image", emptyOptions, whitelist, nil, key, nil, false},
 	}
