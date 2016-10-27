@@ -22,6 +22,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -201,23 +202,19 @@ func copyHeader(dst, src http.Header, keys ...string) {
 // referrer, host, and signature.  It returns an error if the request is not
 // allowed.
 func (p *Proxy) allowed(r *Request) error {
-	if len(p.Referrers) > 0 && !validReferrer(p.Referrers, r.Original) {
-		return fmt.Errorf("request does not contain an allowed referrer: %v", r)
+	//if len(p.Referrers) > 0 && !validReferrer(p.Referrers, r.Original) {
+	//	return fmt.Errorf("request does not contain an allowed referrer: %v", r)
+	//}
+
+	if len(p.Whitelist) > 0 && !validHost(p.Whitelist, r.URL) {
+		return errors.New("request not allowed: invalid host.")
 	}
 
-	if len(p.Whitelist) == 0 && len(p.SignatureKey) == 0 {
-		return nil // no whitelist or signature key, all requests accepted
+	if len(p.SignatureKey) > 0 && !validSignature(p.SignatureKey, r) {
+		return errors.New("request not allowed: invalid signature.")
 	}
 
-	if len(p.Whitelist) > 0 && validHost(p.Whitelist, r.URL) {
-		return nil
-	}
-
-	if len(p.SignatureKey) > 0 && validSignature(p.SignatureKey, r) {
-		return nil
-	}
-
-	return fmt.Errorf("request does not contain an allowed host or valid signature: %v", r)
+	return nil // request allowed
 }
 
 // validHost returns whether the host in u matches one of hosts.
@@ -234,15 +231,15 @@ func validHost(hosts []string, u *url.URL) bool {
 	return false
 }
 
-// returns whether the referrer from the request is in the host list.
-func validReferrer(hosts []string, r *http.Request) bool {
-	u, err := url.Parse(r.Header.Get("Referer"))
-	if err != nil { // malformed or blank header, just deny
-		return false
-	}
-
-	return validHost(hosts, u)
-}
+//// returns whether the referrer from the request is in the host list.
+//func validReferrer(hosts []string, r *http.Request) bool {
+//	u, err := url.Parse(r.Header.Get("Referer"))
+//	if err != nil { // malformed or blank header, just deny
+//		return false
+//	}
+//
+//	return validHost(hosts, u)
+//}
 
 // validSignature returns whether the request signature is valid.
 func validSignature(key []byte, r *Request) bool {
