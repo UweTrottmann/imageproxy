@@ -3,9 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "jQvZRH6It0BtnEuDrfWd+D1mOvg=",
 			"path": "github.com/disintegration/imaging",
-			"revision": "546cb3c5137b3f1232e123a26aa033aade6b3066",
-			"revisionTime": "2015-10-03T04:44:24+03:00"
+			"revision": "5b7e22645c93e3f3911b36b7d66bf8799f3eddfd",
+			"revisionTime": "2016-09-10T12:42:09Z"
 		},
 		{
 			"path": "github.com/golang/glog",
@@ -48,19 +49,22 @@
 			"revisionTime": "2015-02-03T03:00:30-08:00"
 		},
 		{
+			"checksumSHA1": "UD/pejajPyS7WaWVXq2NU1eK4Ic=",
 			"path": "golang.org/x/image/bmp",
-			"revision": "baddd3465a05d84a6d8d3507547a91cb188c81ea",
-			"revisionTime": "2015-09-11T13:43:18+10:00"
+			"revision": "c78039e8ce1e427880f400175cb7cddd6cce7248",
+			"revisionTime": "2016-10-26T04:57:48Z"
 		},
 		{
+			"checksumSHA1": "0ozDsaLc0goE9CvU2E/J9Md3KOQ=",
 			"path": "golang.org/x/image/tiff",
-			"revision": "baddd3465a05d84a6d8d3507547a91cb188c81ea",
-			"revisionTime": "2015-09-11T13:43:18+10:00"
+			"revision": "c78039e8ce1e427880f400175cb7cddd6cce7248",
+			"revisionTime": "2016-10-26T04:57:48Z"
 		},
 		{
+			"checksumSHA1": "Xnm81x3lWS6xRxSthJuLt+fpfi0=",
 			"path": "golang.org/x/image/tiff/lzw",
-			"revision": "baddd3465a05d84a6d8d3507547a91cb188c81ea",
-			"revisionTime": "2015-09-11T13:43:18+10:00"
+			"revision": "c78039e8ce1e427880f400175cb7cddd6cce7248",
+			"revisionTime": "2016-10-26T04:57:48Z"
 		},
 		{
 			"path": "sourcegraph.com/sourcegraph/s3cache",
