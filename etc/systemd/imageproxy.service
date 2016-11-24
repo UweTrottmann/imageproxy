@@ -1,4 +1,5 @@
 # /etc/systemd/system/imageproxy.service
+# run systemctl enable imageproxy.service to run on boot
 
 [Unit]
 Description=Image proxy server
