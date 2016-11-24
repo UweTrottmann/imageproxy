@@ -1,7 +1,9 @@
 # /etc/systemd/system/imageproxy.service
+# run systemctl enable imageproxy.service to run on boot
 
 [Unit]
 Description=Image proxy server
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/imageproxy -addr localhost:8080 -log_dir /var/log/imageproxy -whitelist thetvdb.com -signatureKey @/etc/imageproxy/signing.key
