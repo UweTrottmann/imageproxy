@@ -6,7 +6,7 @@ Description=Image proxy server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/imageproxy -addr localhost:8080 -log_dir /var/log/imageproxy -whitelist thetvdb.com,www.thetvdb.com -signatureKey @/etc/imageproxy/signing.key
+ExecStart=/usr/bin/imageproxy -addr localhost:8080 -log_dir /var/log/imageproxy -whitelist thetvdb.com,www.thetvdb.com -signatureKey "YOUR_KEY"
 
 [Install]
 WantedBy=multi-user.target
