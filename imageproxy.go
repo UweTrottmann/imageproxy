@@ -187,11 +187,11 @@ func (p *Proxy) allowed(r *Request) error {
 	//}
 
 	if len(p.Whitelist) > 0 && !validHost(p.Whitelist, r.URL) {
-		return errors.New("request not allowed: invalid host.")
+		return errors.New("request not allowed: invalid host")
 	}
 
 	if len(p.SignatureKey) > 0 && !validSignature(p.SignatureKey, r) {
-		return errors.New("request not allowed: invalid signature.")
+		return errors.New("request not allowed: invalid signature")
 	}
 
 	return nil // request allowed
