@@ -32,14 +32,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gregjones/httpcache"
 	tphttp "willnorris.com/go/imageproxy/third_party/http"
 )
 
 // Proxy serves image requests.
 type Proxy struct {
 	Client *http.Client // client used to fetch remote URLs
-	Cache  Cache        // cache used to cache responses
 
 	// Whitelist specifies a list of remote hosts that images can be
 	// proxied from.  An empty list means all hosts are allowed.
@@ -73,31 +71,22 @@ type Proxy struct {
 // NewProxy constructs a new proxy.  The provided http RoundTripper will be
 // used to fetch remote URLs.  If nil is provided, http.DefaultTransport will
 // be used.
-func NewProxy(transport http.RoundTripper, cache Cache) *Proxy {
+func NewProxy(transport http.RoundTripper) *Proxy {
 	if transport == nil {
 		transport = http.DefaultTransport
 	}
-	if cache == nil {
-		cache = NopCache
-	}
 
-	proxy := &Proxy{
-		Cache: cache,
-	}
+	proxy := &Proxy{}
 
 	client := new(http.Client)
-	client.Transport = &httpcache.Transport{
-		Transport: &TransformingTransport{
-			Transport:     transport,
-			CachingClient: client,
-			log: func(format string, v ...interface{}) {
-				if proxy.Verbose {
-					log.Printf(format, v...)
-				}
-			},
+	client.Transport = &TransformingTransport{
+		Transport:     transport,
+		CachingClient: client,
+		log: func(format string, v ...interface{}) {
+			if proxy.Verbose {
+				log.Printf(format, v...)
+			}
 		},
-		Cache:               cache,
-		MarkCachedResponses: true,
 	}
 
 	proxy.Client = client
@@ -159,11 +148,6 @@ func (p *Proxy) serveImage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer resp.Body.Close()
-
-	cached := resp.Header.Get(httpcache.XFromCache)
-	if p.Verbose {
-		log.Printf("request: %v (served from cache: %v)", *req, cached == "1")
-	}
 
 	copyHeader(w.Header(), resp.Header, "Cache-Control", "Last-Modified", "Expires", "Etag", "Link")
 

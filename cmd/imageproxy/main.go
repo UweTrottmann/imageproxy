@@ -39,7 +39,7 @@ var version = flag.Bool("version", false, "Deprecated: this flag does nothing")
 func main() {
 	flag.Parse()
 
-	p := imageproxy.NewProxy(nil, nil)
+	p := imageproxy.NewProxy(nil)
 	if *whitelist != "" {
 		p.Whitelist = strings.Split(*whitelist, ",")
 	}
