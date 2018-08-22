@@ -31,8 +31,6 @@ import (
 	"net/url"
 	"strings"
 	"time"
-
-	tphttp "willnorris.com/go/imageproxy/third_party/http"
 )
 
 // Proxy serves image requests.
@@ -116,7 +114,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	var h http.Handler = http.HandlerFunc(p.serveImage)
 	if p.Timeout > 0 {
-		h = tphttp.TimeoutHandler(h, p.Timeout, "Gateway timeout waiting for remote resource.")
+		h = http.TimeoutHandler(h, p.Timeout, "")
 	}
 	h.ServeHTTP(w, r)
 }
