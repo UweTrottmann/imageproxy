@@ -7,7 +7,7 @@ After=network.target
 
 [Service]
 User=www-data
-ExecStart=/usr/bin/imageproxy -addr localhost:8080 -log_dir /var/log/imageproxy -whitelist thetvdb.com,www.thetvdb.com -signatureKey "YOUR_KEY"
+ExecStart=/usr/bin/imageproxy -addr localhost:8080 -whitelist thetvdb.com,www.thetvdb.com -signatureKey "YOUR_KEY"
 
 [Install]
 WantedBy=multi-user.target
