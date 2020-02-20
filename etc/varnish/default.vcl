@@ -20,7 +20,7 @@ backend default {
 }
 
 # lets encrypt support
-include "/etc/varnish/acmetool.vcl";
+include "/etc/varnish/letsencrypt.vcl";
 
 sub vcl_recv {
     # Happens before we check if we have this in cache already.
