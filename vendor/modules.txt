@@ -1,0 +1,27 @@
+# github.com/disintegration/imaging v1.3.0
+## explicit
+github.com/disintegration/imaging
+# github.com/muesli/smartcrop v0.2.1-0.20171215203440-9032446b30f6
+## explicit
+github.com/muesli/smartcrop
+# github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5
+## explicit
+github.com/nfnt/resize
+# github.com/rwcarlsen/goexif v0.0.0-20141222211634-41dad3aa0833
+## explicit
+github.com/rwcarlsen/goexif/exif
+github.com/rwcarlsen/goexif/tiff
+# golang.org/x/image v0.0.0-20171214225156-12117c17ca67
+## explicit
+golang.org/x/image/bmp
+golang.org/x/image/draw
+golang.org/x/image/math/f64
+golang.org/x/image/riff
+golang.org/x/image/tiff
+golang.org/x/image/tiff/lzw
+golang.org/x/image/vp8
+golang.org/x/image/vp8l
+golang.org/x/image/webp
+# willnorris.com/go/gifresize v0.0.0-20160428232521-6a222229fa06
+## explicit
+willnorris.com/go/gifresize

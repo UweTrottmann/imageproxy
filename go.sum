@@ -1,0 +1,12 @@
+github.com/disintegration/imaging v1.3.0 h1:AihaBC+K3RHP7JL8scqq2GgNQhVzMcCYh7gJbAjAvpo=
+github.com/disintegration/imaging v1.3.0/go.mod h1:9B/deIUIrliYkyMTuXJd6OUFLcrZ2tf+3Qlwnaf/CjU=
+github.com/muesli/smartcrop v0.2.1-0.20171215203440-9032446b30f6 h1:VWH1htEKb+QOO4w5wsV/HudZNnU/UL1OIu0JDugUl8k=
+github.com/muesli/smartcrop v0.2.1-0.20171215203440-9032446b30f6/go.mod h1:i2fCI/UorTfgEpPPLWiFBv4pye+YAG78RwcQLUkocpI=
+github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5 h1:BvoENQQU+fZ9uukda/RzCAL/191HHwJA5b13R6diVlY=
+github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5/go.mod h1:jpp1/29i3P1S/RLdc7JQKbRpFeM1dOBd8T9ki5s+AY8=
+github.com/rwcarlsen/goexif v0.0.0-20141222211634-41dad3aa0833 h1:jwa1bSL1nx8Yz7pOXkjXJCbKAffj5i2Rrl9ALRqSy6Y=
+github.com/rwcarlsen/goexif v0.0.0-20141222211634-41dad3aa0833/go.mod h1:hPqNNc0+uJM6H+SuU8sEs5K5IQeKccPqeSjfgcKGgPk=
+golang.org/x/image v0.0.0-20171214225156-12117c17ca67 h1:L8S612DBEq9tpLTxczHuhrf5il+KEdSha8b5A5njQMc=
+golang.org/x/image v0.0.0-20171214225156-12117c17ca67/go.mod h1:ux5Hcp/YLpHSI86hEcLt0YII63i6oz57MZXIpbrjZUs=
+willnorris.com/go/gifresize v0.0.0-20160428232521-6a222229fa06 h1:8A7BlNj87mqoBRUU2o8bklGSHqoKYTmZJ1CFb5lhqHU=
+willnorris.com/go/gifresize v0.0.0-20160428232521-6a222229fa06/go.mod h1:eBM8gogBGCcaH603vxSpnfjwXIpq6nmnj/jauBDKtAk=
