@@ -133,7 +133,11 @@ func (p *Proxy) serveImage(w http.ResponseWriter, r *http.Request) {
 	req.Options.ScaleUp = p.ScaleUp
 
 	if err := p.allowed(req); err != nil {
-		log.Print(err)
+		// Verbose only as often used after turning off old host,
+		// can easily filter responses on Varnish to diagnose instead.
+		if p.Verbose {
+			log.Print(err)
+		}
 		http.Error(w, err.Error(), http.StatusForbidden)
 		return
 	}
