@@ -50,7 +50,7 @@ https://fpm.readthedocs.io/en/latest/installing.html
 
 ```
 apt install ruby ruby-dev rubygems build-essential
-gem install --no-ri --no-rdoc fpm
+gem install --no-document fpm
 fpm --version
 ```
 
@@ -63,4 +63,4 @@ fpm -s dir -t deb -n "imageproxy" -C ~/Downloads/imageproxy_build -v 0.7.0 --ven
 E.g. using scp or magic wormhole.
 
 ### Install
-`apt install .//imageproxy_0.5.1_amd64-sg7.deb`
+`apt install ./imageproxy_0.7.0_amd64.deb`
