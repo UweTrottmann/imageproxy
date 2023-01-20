@@ -17,8 +17,8 @@ See [/etc/systemd](/etc/systemd).
 On WSL2 Ubuntu (best use same version as cache server).
 
 ### Installing go
-https://golang.org/doc/install
-https://github.com/golang/go/wiki/Ubuntu
+- https://golang.org/doc/install
+- https://github.com/golang/go/wiki/Ubuntu
 
 Using backport package instead of tarball (snap doesn't work on WSL2?).
 ```
@@ -45,8 +45,8 @@ chmod 755 ~/Downloads/imageproxy_build/usr/ -R
 ```
 
 ### Installing fpm
-https://github.com/jordansissel/fpm
-https://fpm.readthedocs.io/en/latest/installing.html
+- https://github.com/jordansissel/fpm
+- https://fpm.readthedocs.io/en/latest/installation.html
 
 ```
 apt install ruby ruby-dev rubygems build-essential
