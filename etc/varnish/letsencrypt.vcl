@@ -1,6 +1,6 @@
 # /etc/varnish/letsencrypt.vcl
 
-vcl 4.0;
+vcl 4.1;
 
 backend certbot {
     .host = "127.0.0.1";
