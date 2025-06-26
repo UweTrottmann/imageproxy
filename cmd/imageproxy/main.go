@@ -18,12 +18,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/UweTrottmann/imageproxy"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
+
+	"github.com/UweTrottmann/imageproxy"
 )
 
 var addr = flag.String("addr", "localhost:8080", "TCP address to listen on")
@@ -51,7 +52,7 @@ func main() {
 		if strings.HasPrefix(*signatureKey, "@") {
 			file := strings.TrimPrefix(*signatureKey, "@")
 			var err error
-			key, err = ioutil.ReadFile(file)
+			key, err = os.ReadFile(file)
 			if err != nil {
 				log.Fatalf("error reading signature file: %v", err)
 			}
