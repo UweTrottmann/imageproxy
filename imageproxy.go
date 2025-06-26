@@ -33,6 +33,17 @@ import (
 	"time"
 )
 
+const rootHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SeriesGuide Image Cache Server</title>
+</head>
+<body>
+	<p>This is an image cache server for <a href="https://www.seriesgui.de">SeriesGuide</a>.</p>
+</body>
+</html>`
+
 // Proxy serves image requests.
 type Proxy struct {
 	Client *http.Client // client used to fetch remote URLs
@@ -101,14 +112,20 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/health-check" {
 		// cache for up to a minute to prevent abuse
 		w.Header().Set("Cache-Control", "public, max-age=60")
-		fmt.Fprint(w, "OK")
+		_, err := fmt.Fprint(w, "OK")
+		if err != nil {
+			log.Printf("Failed to return health-check page: %v", err)
+		}
 		return
 	}
 
 	if r.URL.Path == "/" {
 		// cache for up to a day to prevent abuse
 		w.Header().Set("Cache-Control", "public, max-age=86400")
-		fmt.Fprint(w, "This is an image cache server for SeriesGuide.")
+		_, err := fmt.Fprint(w, rootHTML)
+		if err != nil {
+			log.Printf("Failed to return index page: %v", err)
+		}
 		return
 	}
 
