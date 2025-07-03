@@ -4,14 +4,37 @@ A customized version of willnoris/imageproxy (info page, cached health check, ho
 Forked at "Commits on Aug 6, 2016" `94dbd77`.
 
 ## Usage
-```
-# listen on all interfaces
+
+```bash
+# Send to server
+scp imageproxy_0.7.1_amd64.deb user@host:/home/user/
+
+# Install
+sudo apt install ./imageproxy_0.7.1_amd64.deb
+
+# Listen on all interfaces (see service config for actual commands)
 imageproxy -addr 0.0.0.0:8080
-# see service config for actual commands
 ```
 
-### Systemd config
+### Systemd service config
+
 See [/etc/systemd](/etc/systemd).
+
+```bash
+# Reload systemd config
+sudo systemctl daemon-reload
+
+# Configure to run on boot
+sudo systemctl enable imageproxy.service
+
+# Start
+sudo systemctl start imageproxy.service
+
+# Show service status
+sudo systemctl status imageproxy
+```
+
+More at https://wiki.ubuntu.com/SystemdForUpstartUsers#Commands
 
 ## Building
 On WSL2 Ubuntu (best use same version as cache server).
@@ -58,9 +81,3 @@ fpm --version
 ```
 fpm -s dir -t deb -n "imageproxy" -C ~/Downloads/imageproxy_build -v 0.7.0 --vendor "" --maintainer "Uwe Trottmann <uwe@seriesgui.de>" --url "https://github.com/UweTrottmann/imageproxy" --description "A caching, resizing image proxy written in Go. Fork customized for SeriesGuide." .
 ```
-
-### Copy to server
-E.g. using scp or magic wormhole.
-
-### Install
-`apt install ./imageproxy_0.7.0_amd64.deb`
