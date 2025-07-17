@@ -3,7 +3,16 @@
 
 [Unit]
 Description=Image proxy server
+
+# Start after/stop before network management stack is up/down (but no need for network to be "up")
+# https://systemd.io/NETWORK_ONLINE/
 After=network.target
+
+# Do not allow automatic start if started for 5 times in the last 10 seconds
+# Values are identical to suggested default values (DefaultStartLimitIntervalSec and DefaultStartLimitBurst)
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html
+StartLimitIntervalSec=10
+StartLimitBurst=5
 
 [Service]
 User=www-data
@@ -11,6 +20,10 @@ User=www-data
 # To not require systemd-resolved.service to be up to look up "localhost" use 127.0.0.1
 # https://systemd.io/NETWORK_ONLINE/
 ExecStart=/usr/bin/imageproxy -addr 127.0.0.1:8080 -whitelist image.tmdb.org -signatureKey "YOUR_KEY"
+
+# Restart on unclean exit
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
