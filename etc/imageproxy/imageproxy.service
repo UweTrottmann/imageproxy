@@ -7,7 +7,10 @@ After=network.target
 
 [Service]
 User=www-data
-ExecStart=/usr/bin/imageproxy -addr localhost:8080 -whitelist image.tmdb.org -signatureKey "YOUR_KEY"
+
+# To not require systemd-resolved.service to be up to look up "localhost" use 127.0.0.1
+# https://systemd.io/NETWORK_ONLINE/
+ExecStart=/usr/bin/imageproxy -addr 127.0.0.1:8080 -whitelist image.tmdb.org -signatureKey "YOUR_KEY"
 
 [Install]
 WantedBy=multi-user.target
