@@ -19,7 +19,7 @@ User=www-data
 
 # To not require systemd-resolved.service to be up to look up "localhost" use 127.0.0.1
 # https://systemd.io/NETWORK_ONLINE/
-ExecStart=/usr/bin/imageproxy -addr 127.0.0.1:8080 -whitelist image.tmdb.org -signatureKey "YOUR_KEY"
+ExecStart=/usr/bin/imageproxy -addr 127.0.0.1:8080 -whitelist image.tmdb.org,artworks.thetvdb.com,www.thetvdb.com -signatureKey "YOUR_KEY"
 
 # Restart on unclean exit
 # https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
